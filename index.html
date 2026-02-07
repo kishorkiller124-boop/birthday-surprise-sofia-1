@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday ❤️</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg,#ffeef8,#fff5f5);
+  min-height:100vh;
+  color:#7a3d5c;
+}
+
+.screen{
+  display:none;
+  min-height:100vh;
+  padding:60px 20px;
+  justify-content:center;
+  align-items:center;
+}
+
+.screen.active{
+  display:flex;
+  animation:fade .6s ease;
+}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;}
+}
+
+.card{
+  background:white;
+  max-width:400px;
+  width:100%;
+  padding:30px;
+  border-radius:25px;
+  text-align:center;
+  box-shadow:0 20px 60px rgba(0,0,0,.15);
+}
+
+h1{
+  font-size:22px;
+  margin-bottom:15px;
+}
+
+p{
+  font-size:14px;
+  line-height:1.7;
+  margin-bottom:20px;
+}
+
+.btn{
+  background:#ffb6c1;
+  border:none;
+  border-radius:25px;
+  padding:12px 26px;
+  font-size:15px;
+  cursor:pointer;
+}
+
+/* DOG */
+.dog{
+  width:120px;
+  margin:15px auto 25px;
+}
+
+/* CAKE */
+.cake{
+  position:relative;
+  width:180px;
+  margin:25px auto;
+}
+
+.cake-top{
+  background:#ffd1dc;
+  height:40px;
+  border-radius:20px 20px 0 0;
+}
+
+.cake-body{
+  background:#ffb6c1;
+  height:80px;
+  border-radius:0 0 20px 20px;
+}
+
+.candle{
+  position:absolute;
+  top:-40px;
+  left:50%;
+  transform:translateX(-50%);
+  width:12px;
+  height:40px;
+  background:#fff;
+  border-radius:6px;
+}
+
+.flame{
+  position:absolute;
+  top:-20px;
+  left:50%;
+  transform:translateX(-50%);
+  width:14px;
+  height:20px;
+  background:orange;
+  border-radius:50%;
+  opacity:0;
+  animation:flicker .8s infinite;
+}
+
+.candle.lit .flame{opacity:1;}
+
+@keyframes flicker{
+  50%{transform:translateX(-50%) scale(1.1);}
+}
+
+/* ALBUM */
+.album{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-bottom:20px;
+}
+
+.album img{
+  width:100%;
+  height:90px;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+/* GIFT */
+.gift{
+  font-size:60px;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="screen active" id="s1">
+  <div class="card">
+    <h1>Happy 18th Birthday<br>My Cutiee Pie ❤️</h1>
+    <img src="images/dog.gif" class="dog" alt="Doberman">
+    <button class="btn" onclick="go(2)">Next</button>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="screen" id="s2">
+  <div class="card">
+    <h1>Make a Wish 🎂</h1>
+
+    <div class="cake">
+      <div class="candle" id="candle">
+        <div class="flame"></div>
+      </div>
+      <div class="cake-top"></div>
+      <div class="cake-body"></div>
+    </div>
+
+    <button class="btn" id="cakeBtn" onclick="cakeAction()">Light</button>
+  </div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="screen" id="s3">
+  <div class="card">
+    <h1>HAPPY BIRTHDAY</h1>
+    <p>
+Even though I can’t be there with you on your special day,  
+I hope this message reaches you and wraps you in all the happiness  
+in the world, reminding you that I miss you so much.  
+
+You’re always on my mind. I hope you achieve your dream of modeling one day,  
+and most of all, please stay safe knowing that even from afar,  
+my heart is right there with you, wishing you a year filled with love, joy,  
+and everything your heart desires.
+    </p>
+    <button class="btn" onclick="go(4)">Next</button>
+  </div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="screen" id="s4">
+  <div class="card">
+    <h1>Miss You A Lot 💕</h1>
+
+    <div class="album">
+      <!-- 21 IMAGES -->
+      <img src="images/img1.jpg">
+      <img src="images/img2.jpg">
+      <img src="images/img3.jpg">
+      <img src="images/img4.jpg">
+      <img src="images/img5.jpg">
+      <img src="images/img6.jpg">
+      <img src="images/img7.jpg">
+      <img src="images/img8.jpg">
+      <img src="images/img9.jpg">
+      <img src="images/img10.jpg">
+      <img src="images/img11.jpg">
+      <img src="images/img12.jpg">
+      <img src="images/img13.jpg">
+      <img src="images/img14.jpg">
+      <img src="images/img15.jpg">
+      <img src="images/img16.jpg">
+      <img src="images/img17.jpg">
+      <img src="images/img18.jpg">
+      <img src="images/img19.jpg">
+      <img src="images/img20.jpg">
+      <img src="images/img21.jpg">
+    </div>
+
+    <button class="btn" onclick="go(5)">Next</button>
+  </div>
+</div>
+
+<!-- PAGE 5 -->
+<div class="screen" id="s5">
+  <div class="card">
+    <h1>A Small Gift 🎁</h1>
+    <div class="gift" onclick="gift()">🎁</div>
+    <p id="giftText"></p>
+  </div>
+</div>
+
+<script>
+function go(n){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById('s'+n).classList.add('active');
+}
+
+/* CAKE LOGIC */
+let lit=false;
+function cakeAction(){
+  const candle=document.getElementById('candle');
+  const btn=document.getElementById('cakeBtn');
+
+  if(!lit){
+    candle.classList.add('lit');
+    btn.innerText="Blow";
+    lit=true;
+  }else{
+    candle.classList.remove('lit');
+    setTimeout(()=>go(3),600);
+  }
+}
+
+/* GIFT */
+function gift(){
+  document.getElementById('giftText').innerText=
+  "Once again, wishing you many more happy returns of the day ❤️🎉";
+}
+</script>
+
+</body>
+</html>
